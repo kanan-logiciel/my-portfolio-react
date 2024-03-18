@@ -1,3 +1,12 @@
 .main-content {
   background-color:rgb(233, 228, 228);
 }
+
+.list-parts li{
+  list-style-type: none;
+  text-decoration: none;
+}
+
+/* .list-parts li {
+  text-decoration: under;
+} */

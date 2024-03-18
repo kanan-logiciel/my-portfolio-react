@@ -8,7 +8,7 @@ function Header() {
   return (
       // Header section starts here 
       <Navbar className="header-bar" expand="lg">
-        <Navbar.Brand href="#" className="logo">
+        <Navbar.Brand className="logo">
           myPortfolio
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
