@@ -1,0 +1,45 @@
+.skill {
+  width:100% ;
+  height:auto;
+  background-color:rgb(233, 228, 228);
+}
+
+.skill h1 {
+  font-size: 45px;
+  font-family: arial;
+  color:rgb(30, 69, 87);
+  padding:5px;
+  text-align: left;
+  font-weight:bold;
+}
+
+.skill p {
+  font-family : arial;
+  padding: 10px;
+  color:rgb(15, 15, 15);
+}
+
+.progress-tab{
+  width: 50%;
+  height:auto;
+  float:left;
+}
+
+.progress-bar {
+  width:50%;
+  height:auto;
+}
+
+.course {
+  width:90%;
+  margin-left: 5%;
+  /* border:solid 0.1px;   */
+}
+
+.name {
+  font-family: arial;
+  margin-left:5%;
+  text-align: left;
+}
+
+/* Skill section ends here  */

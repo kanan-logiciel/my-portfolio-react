@@ -1,0 +1,20 @@
+.contact h1 {
+  font-size: 45px;
+  font-family: arial;
+  color:rgb(30, 69, 87);
+  padding:0;
+  text-align: left;
+  font-weight:bold;
+}
+
+.contact p {
+  font-family : arial;
+  color:rgb(15, 15, 15);
+}
+
+.contact-form {
+  width:100%;
+  height:auto;
+  padding: 10px;
+  background-color:rgb(233, 228, 228);
+}

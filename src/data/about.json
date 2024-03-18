@@ -1,0 +1,17 @@
+{
+  "title": "About",
+  "description": "As a UI/UX developer, I am driven by a deep passion for creating intuitive and engaging digital experiences that resonate with users on a profound level. With a meticulous attention to detail and a keen eye for design, I strive to bridge the gap between functionality and aesthetics, crafting interfaces that are not only visually appealing but also seamlessly functional.",
+  "user_details": {
+    "role": "UI/UX Designer & Web Developer.",
+    "header_intro": "A UI/UX designer is a creative visionary tasked with shaping the digital experiences that define our interaction with technology. With a keen understanding of user behavior and design principles, they craft interfaces that seamlessly blend aesthetics with functionality",
+    "footer_intro": "Providing person details allows us to delve into the intricate tapestry of an individual's life, weaving together the threads of their experiences, aspirations, and accomplishments. From their name to their background, each detail offers a glimpse into the unique essence of who they are.",
+    "birthday": "1 May, 1995",
+    "website": "www.example.com",
+    "phone": "+91 123 456 7890",
+    "city": "New York, USA",
+    "age":"30",
+    "degree":"Maters",
+    "email":"email@example.com",
+    "freelance":"Available"
+  }
+}
