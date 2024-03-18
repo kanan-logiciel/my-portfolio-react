@@ -1,7 +1,7 @@
 .skill {
   width:100% ;
   height:auto;
-  background-color:rgb(233, 228, 228);
+  background-color:rgb(231, 230, 230);
 }
 
 .skill h1 {
@@ -11,6 +11,7 @@
   padding:5px;
   text-align: left;
   font-weight:bold;
+  margin-left:6px;
 }
 
 .skill p {
@@ -19,7 +20,7 @@
   color:rgb(15, 15, 15);
 }
 
-.progress-tab{
+.progress-tab {
   width: 50%;
   height:auto;
   float:left;

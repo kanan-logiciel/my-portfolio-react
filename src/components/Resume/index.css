@@ -7,6 +7,12 @@
   font-weight:bold;
 }
 
+.main h6 {
+  background-color: beige;
+  padding: 5px;
+  display: inline;
+}
+
 .main {
   width:100%;
   height:auto;

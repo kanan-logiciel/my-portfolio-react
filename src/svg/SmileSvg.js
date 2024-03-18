@@ -2,8 +2,8 @@ const SmileSvg = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="50"
+      width="42"
+      height="42"
       fill="currentColor"
       className="bi bi-emoji-smile"
       viewBox="0 0 16 16"
