@@ -12,51 +12,31 @@ const Footer = () => {
           <Col md={3}>
             <h5>About</h5>
             <ul className="list-parts">
-              <li>
-                <a href="#">About Us</a>
-              </li>
-              <li>
-                <a href="#">Our Team</a>
-              </li>
-              <li>
-                <a href="#">Testimonials</a>
-              </li>
+              <li>About Us</li>
+              <li>Our Team</li>
+              <li>Testimonials</li>
             </ul>
           </Col>
           <Col md={3}>
             <h5>Facts</h5>
             <ul className="list-parts">
-              <li>
-                <a href="#">Company Facts</a>
-              </li>
-              <li>
-                <a href="#">Statistics</a>
-              </li>
+              <li>Company Facts</li>
+              <li>Statistics</li>
             </ul>
           </Col>
           <Col md={3}>
             <h5>Portfolio</h5>
             <ul className="list-parts">
-              <li>
-                <a href="#">Projects</a>
-              </li>
-              <li>
-                <a href="#">Client Work</a>
-              </li>
+              <li>Projects</li>
+              <li>Client Work</li>
             </ul>
           </Col>
           <Col md={3}>
             <h5>Resume</h5>
             <ul className="list-parts">
-              <li>
-                <a href="#">Experience</a>
-              </li>
-              <li>
-                <a href="#">Education</a>
-              </li>
-              <li>
-                <a href="#">Skills</a>
-              </li>
+              <li>Experience</li>
+              <li>Education</li>
+              <li>Skills</li>
             </ul>
           </Col>
         </Row>
