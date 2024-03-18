@@ -1,10 +1,10 @@
 .resume h1 {
   font-size: 45px;
   font-family: arial;
-  color:rgb(30, 69, 87);
-  padding:0;
+  color: rgb(30, 69, 87);
+  padding: 0;
   text-align: left;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .main h6 {
@@ -14,16 +14,16 @@
 }
 
 .main {
-  width:100%;
-  height:auto;
+  width: 100%;
+  height: auto;
   display: flex;
 }
 
 .summary {
   width: 45%;
   margin-left: 5%;
-  height:auto;
-  float:left;
+  height: auto;
+  float: left;
 }
 
 .summary h2 {
@@ -35,17 +35,17 @@
 }
 
 .experience {
-  width:45%;
-  height:auto;
+  width: 45%;
+  height: auto;
 }
 
-.resume h2{
-  font-family:arial;
-  font-weight:bold;
+.resume h2 {
+  font-family: arial;
+  font-weight: bold;
 }
 
 .description-bar {
-  margin-left:0;
+  margin-left: 0;
   font-style: italic;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .section-2 {
-  margin-left:5%;
+  margin-left: 5%;
 }
 .section-2 h6 {
   font-family: "Raleway", sans-serif;
@@ -69,10 +69,10 @@
 }
 
 .section-3 {
-  margin-left :5%;
+  margin-left: 5%;
 }
 
 .section-4 {
-  margin-left :5%;
+  margin-left: 5%;
 }
 /* Resume section ends here  */
