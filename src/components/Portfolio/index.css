@@ -1,25 +1,25 @@
 .portfolio {
-  width:100%;
-  height:auto;
-  background-color:rgb(231, 230, 230);
+  width: 100%;
+  height: auto;
+  background-color: rgb(231, 230, 230);
 }
 
 .portfolio h1 {
   font-size: 45px;
   font-family: arial;
-  color:rgb(30, 69, 87);
-  padding: 5px;;
+  color: rgb(30, 69, 87);
+  padding: 5px;
   text-align: left;
-  margin-left:6px;
-  font-weight:bold;
+  margin-left: 6px;
+  font-weight: bold;
 }
 
 .portfolio p {
   padding: 6px;
-  color:rgb(15, 15, 15);
+  color: rgb(15, 15, 15);
 }
 
 .docs {
-  width:100%;
-  height:auto;
+  width: 100%;
+  height: auto;
 }

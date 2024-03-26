@@ -6,10 +6,10 @@
 .about h1 {
   font-size: 45px;
   font-family: arial;
-  color:rgb(30, 69, 87);
-  padding:0;
+  color: rgb(30, 69, 87);
+  padding: 0;
   text-align: left;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .about hr {
@@ -17,12 +17,12 @@
 }
 
 .about p {
-  font-family : arial;
-  color:rgb(15, 15, 15);
+  font-family: arial;
+  color: rgb(15, 15, 15);
 }
 
 .list {
-  font-family : arial;
+  font-family: arial;
   font-size: 18px;
 }
 

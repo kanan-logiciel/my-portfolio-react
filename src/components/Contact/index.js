@@ -2,15 +2,14 @@ import "./index.css";
 
 import Container from "react-bootstrap/Container";
 
-import data from "../../data/contact.json";
-
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 import Button from "react-bootstrap/Button";
 
 import Form from "react-bootstrap/Form";
 
-function Contact() {
+function Contact(props) {
+  const { data } = props;
   return (
     <Container fluid>
       {/* Contact section starts from here  */}
@@ -47,7 +46,7 @@ function Contact() {
         </div>
       </div>
       {/* Contact section ends here  */}
-      <br/> <br/>
+      <br /> <br />
     </Container>
   );
 }

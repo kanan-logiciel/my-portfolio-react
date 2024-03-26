@@ -5,11 +5,10 @@ import RichtextSvg from "../../svg/RichtextSvg";
 import HeadsetSvg from "../../svg/HeadsetSvg";
 import PeopleSvg from "../../svg/PeopleSvg";
 
-import data from "../../data/facts.json";
-
 import "./index.css";
 
-function Facts() {
+function Facts(props) {
+  const { data } = props;
   return (
     <Container fluid>
       {/* Facts section ges here */}

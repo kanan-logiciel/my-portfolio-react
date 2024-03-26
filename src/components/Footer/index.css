@@ -2,7 +2,7 @@
   background-color: rgb(233, 228, 228);
 }
 
-.list-parts li a {
+.list-parts li {
   list-style-type: none;
   text-decoration: none;
   color: grey;

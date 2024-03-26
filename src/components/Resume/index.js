@@ -2,9 +2,8 @@ import "./index.css";
 
 import Container from "react-bootstrap/Container";
 
-import data from "../../data/resume.json";
-
-function Resume() {
+function Resume(props) {
+  const { data } = props;
   return (
     <Container fluid>
       {/* Resume and Summary section starts here  */}
@@ -29,18 +28,14 @@ function Resume() {
               <h5>{data.sub_headings.sub_headings2}</h5>
               <h6> {data.years.session1}</h6>
               <p className="para">{data.highlights.education}</p>
-              <p>
-                {data.paragraph}
-              </p>
+              <p>{data.paragraph}</p>
             </div>
             <br />
             <div className="section-2">
               <h5>{data.sub_headings.sub_headings3}</h5>
               <h6>{data.years.session2}</h6>
               <p className="para">{data.highlights.education}</p>
-              <p>
-                {data.paragraph}
-              </p>
+              <p>{data.paragraph}</p>
             </div>
           </div>
 

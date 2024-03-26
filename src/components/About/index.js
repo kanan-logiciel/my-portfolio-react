@@ -1,10 +1,11 @@
+import { number, oneOfType, shape, string } from "prop-types";
 import "./index.css";
 
 import Container from "react-bootstrap/Container";
 
-import data from "../../data/about.json";
+function About(props) {
+  const { data } = props;
 
-function About() {
   return (
     <Container fluid>
       {/* About section starts here */}
@@ -72,5 +73,13 @@ function About() {
     </Container>
   );
 }
+
+About.propTypes = {
+  data: shape({
+    user_details: shape({
+      role: oneOfType([string, number]).isRequired,
+    }),
+  }),
+};
 
 export default About;

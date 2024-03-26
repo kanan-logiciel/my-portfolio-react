@@ -1,0 +1,12 @@
+{
+  "logo": "myPortfolio",
+  "options": {
+    "list1": "About",
+    "list2": "Facts",
+    "list3": "Portfolio",
+    "list4": "Resume",
+    "list5": "Skill",
+    "list6": "Services",
+    "list7": "Contact"
+  }
+}

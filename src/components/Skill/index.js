@@ -1,22 +1,18 @@
 import "./index.css";
 
-import data from "../../data/skill.json";
-
 import Container from "react-bootstrap/Container";
 
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-
-function Skill() {
+function Skill(props) {
+  const { data } = props;
   return (
     <Container fluid>
       {/* Skill section starts here */}
       <div className="skill">
         <h1>{data.title}</h1>
         <hr></hr>
-        <p>
-          {data.description}
-        </p>
+        <p>{data.description}</p>
         <div className="progress-tab">
           <span className="name">HTML</span>
           <span>

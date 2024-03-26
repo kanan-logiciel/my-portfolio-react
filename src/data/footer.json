@@ -1,0 +1,19 @@
+{
+  "title": "About",
+  "title2": "Facts",
+  "title3": "Portfolio",
+  "title4": "Resume",
+  "list_content": {
+    "list1": "About Us",
+    "list2": "Our Team",
+    "list3": "Testimonials",
+    "list4": "Company Facts",
+    "list5": "Statistics",
+    "list6": "Projects",
+    "list7": "Client Work",
+    "list8": "Experience",
+    "list9": "Education",
+    "list10": "Skills"
+  },
+  "copyright": "myPortfolio"
+}

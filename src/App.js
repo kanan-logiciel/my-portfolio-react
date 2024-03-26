@@ -12,6 +12,16 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
+import aboutData from "./data/about.json";
+import factsData from "./data/facts.json";
+import skillData from "./data/skill.json";
+import resumeData from "./data/resume.json";
+import portfolioData from "./data/portfolio.json";
+import servicesData from "./data/services.json";
+import contactData from "./data/contact.json";
+import footerData from "./data/footer.json";
+import headerDtat from "./data/header.json";
+
 const USER_PROFILE = {
   name: "Kanan",
   age: 22,
@@ -27,15 +37,15 @@ function App() {
     <div className="App container">
       {/* <UserProfile name="Kanan" count={count} updateCount={updateCount} /> */}
       {/* <UserProfile {...USER_PROFILE} /> */}
-      <Header />
-      <About />
-      <Facts />
-      <Skill />
-      <Resume />
-      <Portfolio />
-      <Services />
-      <Contact />
-      <Footer />
+      <Header data={headerDtat} />
+      <About data={aboutData} />
+      <Facts data={factsData} />
+      <Skill data={skillData} />
+      <Resume data={resumeData} />
+      <Portfolio data={portfolioData} />
+      <Services data={servicesData} />
+      <Contact data={contactData} />
+      <Footer data={footerData} />
     </div>
   );
 }

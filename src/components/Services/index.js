@@ -1,7 +1,5 @@
 import "./index.css";
 
-import data from "../../data/services.json";
-
 import Checklist from "../../svg/ChecklistSvg";
 import Briefcase from "../../svg/BriefcaseSvg";
 import ChartSvg from "../../svg/ChartSvg";
@@ -11,7 +9,8 @@ import CalendarSvg from "../../svg/CalendarSvg";
 
 import Container from "react-bootstrap/Container";
 
-function Services() {
+function Services(props) {
+  const { data } = props;
   return (
     <Container fluid>
       {/* Services section starts from here  */}
