@@ -4,6 +4,7 @@ import "./index.css";
 
 import { Container, Row, Col } from "react-bootstrap";
 
+import { string, shape } from "prop-types";
 const Footer = (props) => {
   const { data } = props;
   return (
@@ -52,6 +53,25 @@ const Footer = (props) => {
       </Container>
     </footer>
   );
+};
+
+Footer.propsTypes = {
+  data: shape({
+    title: string.isRequired,
+    list_content: shape({
+      list1: string.isRequired,
+      list2: string.isRequired,
+      list3: string.isRequired,
+      list4: string.isRequired,
+      list5: string.isRequired,
+      list6: string.isRequired,
+      list7: string.isRequired,
+      list8: string.isRequired,
+      list9: string.isRequired,
+      list10: string.isRequired,
+    }),
+    copyright: string.isRequired,
+  }),
 };
 
 export default Footer;

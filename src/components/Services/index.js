@@ -9,6 +9,8 @@ import CalendarSvg from "../../svg/CalendarSvg";
 
 import Container from "react-bootstrap/Container";
 
+import { string, shape } from "prop-types";
+
 function Services(props) {
   const { data } = props;
   return (
@@ -76,5 +78,28 @@ function Services(props) {
     </Container>
   );
 }
+
+Services.propTypes = {
+  data: shape({
+    title: string.isRequired,
+    description: string.isRequired,
+  }),
+  services_headings: shape({
+    heading1: string.isRequired,
+    heading2: string.isRequired,
+    heading3: string.isRequired,
+    heading4: string.isRequired,
+    heading5: string.isRequired,
+    heading6: string.isRequired,
+  }),
+  services_description: shape({
+    paragraph1: string.isRequired,
+    paragraph2: string.isRequired,
+    paragraph3: string.isRequired,
+    paragraph4: string.isRequired,
+    paragraph5: string.isRequired,
+    paragraph6: string.isRequired,
+  }),
+};
 
 export default Services;

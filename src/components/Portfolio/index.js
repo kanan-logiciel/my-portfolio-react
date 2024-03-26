@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 
 import "./index.css";
 
+import { string, shape } from "prop-types";
 const images = [
   "product1.jpg",
   "product2.jpg",
@@ -44,4 +45,10 @@ function Portfolio(props) {
   );
 }
 
+Portfolio.propTypes = {
+  data: shape({
+    title: string.isRequired,
+    description: string.isRequired,
+  }),
+};
 export default Portfolio;

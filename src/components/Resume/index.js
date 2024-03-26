@@ -2,6 +2,8 @@ import "./index.css";
 
 import Container from "react-bootstrap/Container";
 
+import { string, shape, oneOfType, number } from "prop-types";
+
 function Resume(props) {
   const { data } = props;
   return (
@@ -76,4 +78,50 @@ function Resume(props) {
   );
 }
 
+Resume.propTypes = {
+  data: shape({
+    title: string.isRequired,
+    description: string.isRequired,
+    headings: shape({
+      heading1: string.isRequired,
+      heading2: string.isRequired,
+      heading3: string.isRequired,
+    }),
+    sub_headings: shape({
+      sub_headings1: string.isRequired,
+      sub_headings2: string.isRequired,
+      sub_headings3: string.isRequired,
+      sub_headings4: string.isRequired,
+      sub_headings5: string.isRequired,
+    }),
+    years: shape({
+      session1: oneOfType([string, number]).isRequired,
+      session2: oneOfType([string, number]).isRequired,
+      session3: oneOfType([string, number]).isRequired,
+    }),
+    summary: shape({
+      list1: oneOfType([string, number]).isRequired,
+      list2: oneOfType([string, number]).isRequired,
+    }),
+    paragraph: string.isRequired,
+    highlights: shape({
+      summary: string.isRequired,
+      education: string.isRequired,
+      "professional-exp": string.isRequired,
+      "professional-exp1": string.isRequired,
+    }),
+    senior_list: shape({
+      list_1: string.isRequired,
+      list_2: string.isRequired,
+      list_3: string.isRequired,
+      list_4: string.isRequired,
+    }),
+    graphic_list: shape({
+      list_1: string.isRequired,
+      list_2: string.isRequired,
+      list_3: string.isRequired,
+      list_4: string.isRequired,
+    }),
+  }),
+};
 export default Resume;

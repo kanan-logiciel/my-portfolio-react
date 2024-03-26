@@ -5,6 +5,8 @@ import RichtextSvg from "../../svg/RichtextSvg";
 import HeadsetSvg from "../../svg/HeadsetSvg";
 import PeopleSvg from "../../svg/PeopleSvg";
 
+import { string, shape, number, oneOfType } from "prop-types";
+
 import "./index.css";
 
 function Facts(props) {
@@ -66,4 +68,14 @@ function Facts(props) {
   );
 }
 
+Facts.propsTypes = {
+  data: shape({
+    title: string.isRequired,
+    description: string.isRequired,
+    happy_clients: number.isRequired,
+    projects: number.isRequired,
+    employees: number.isRequired,
+    hard_workers: number.isRequired,
+  }),
+};
 export default Facts;

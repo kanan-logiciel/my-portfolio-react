@@ -76,8 +76,20 @@ function About(props) {
 
 About.propTypes = {
   data: shape({
+    title: string.isRequired,
+    description: string.isRequired,
     user_details: shape({
       role: oneOfType([string, number]).isRequired,
+      header_intro: oneOfType([string, number]).isRequired,
+      footer_intro: oneOfType([string, number]).isRequired,
+      birthday: oneOfType([string, number]).isRequired,
+      website: string.isRequired,
+      phone: oneOfType([string, number]).isRequired,
+      city: string.isRequired,
+      age: oneOfType([string, number]).isRequired,
+      degree: oneOfType([string, number]).isRequired,
+      email: string.isRequired,
+      freelance: string.isRequired,
     }),
   }),
 };

@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 
 import ProgressBar from "react-bootstrap/ProgressBar";
 
+import { string, shape } from "prop-types";
 function Skill(props) {
   const { data } = props;
   return (
@@ -57,4 +58,10 @@ function Skill(props) {
   );
 }
 
+Skill.propTypes = {
+  data: shape({
+    title: string,
+    description: string,
+  }),
+};
 export default Skill;

@@ -8,6 +8,8 @@ import Button from "react-bootstrap/Button";
 
 import Form from "react-bootstrap/Form";
 
+import { string, shape } from "prop-types";
+
 function Contact(props) {
   const { data } = props;
   return (
@@ -51,4 +53,10 @@ function Contact(props) {
   );
 }
 
+Contact.propsTypes = {
+  data: shape({
+    title: string.isRequired,
+    description: string.isRequired,
+  }),
+};
 export default Contact;
