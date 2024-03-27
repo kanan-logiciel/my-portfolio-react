@@ -20,7 +20,7 @@ import portfolioData from "./data/portfolio.json";
 import servicesData from "./data/services.json";
 import contactData from "./data/contact.json";
 import footerData from "./data/footer.json";
-import headerDtat from "./data/header.json";
+import headerData from "./data/header.json";
 
 const USER_PROFILE = {
   name: "Kanan",
@@ -37,7 +37,7 @@ function App() {
     <div className="App container">
       {/* <UserProfile name="Kanan" count={count} updateCount={updateCount} /> */}
       {/* <UserProfile {...USER_PROFILE} /> */}
-      <Header data={headerDtat} />
+      <Header data={headerData} />
       <About data={aboutData} />
       <Facts data={factsData} />
       <Skill data={skillData} />
