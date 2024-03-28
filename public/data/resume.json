@@ -1,0 +1,44 @@
+{
+  "title": "Resume",
+  "description": "UI/UX courses offer invaluable opportunities for individuals to delve into the dynamic world of user interface and user experience design. These courses provide a structured and comprehensive approach to understanding the principles, methodologies, and tools essential for creating effective and engaging digital experiences.",
+  "headings": {
+    "heading1": "Summary",
+    "heading2": "Education",
+    "heading3": "Professional Experience"
+  },
+  "sub_headings": {
+    "sub_headings1": "ALEX SMITH",
+    "sub_headings2": "MASTER OF FINE ARTS & GRAPHIC DESIGN",
+    "sub_headings3": "BACHELOR OF FINE ARTS & GRAPHIC DESIGN",
+    "sub_headings4": "SENIOR GRAPHIC DESIGN SPECIALIST",
+    "sub_headings5": "GRAPHIC DESIGN SPECIALIST"
+  },
+  "highlights": {
+    "summary": "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.",
+    "education": "Rochester Institute of Technology, Rochester, NY",
+    "professional-exp": "Experion, New York, NY",
+    "professional-exp1":"Stepping Stone Advertising, New York, NY"
+  },
+  "years": {
+    "session1": "2015-2016",
+    "session2": "2010-2014",
+    "session3": "2017-2018"
+  },
+  "summary":{
+    "list1":"Portland par 127,Orlando, FL",
+    "list2":"(123) 456-7891"
+  },
+  "senior_list":{
+    "list_1": "Lead in the design, development, and implementation of the graphic, layout, and production communication materials",
+    "list_2": "Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project.",
+    "list_3": "Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design",
+    "list_4": "Oversee the efficient use of production project budgets ranging from $2,000 - $25,000"
+  },
+  "graphic_list":{
+    "list_1": "Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).",
+    "list_2": "Managed up to 5 projects or tasks at a given time while under pressure",
+    "list_3": "Recommended and consulted with clients on the most appropriate graphic design",
+    "list_4": "Created 4+ design presentations and proposals a month for clients and account managers"
+  },
+  "paragraph": "Those who leave will be forgiven. And if any one should work at the time, he should be just. But those pleasures which mark the sands of the port of Nerada as the most worthy of the gentle"
+}

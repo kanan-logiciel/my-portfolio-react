@@ -10,15 +10,23 @@ import Form from "react-bootstrap/Form";
 
 import { string, shape } from "prop-types";
 
-function Contact(props) {
-  const { data } = props;
+import React, { useContext } from "react";
+
+import { DataContext } from "../../context/DataContext";
+
+function Contact() {
+  const { contactData } = useContext(DataContext);
+
+  if (!contactData) {
+    return <div>Loading...</div>; // Handle loading state
+  }
   return (
     <Container fluid>
       {/* Contact section starts from here  */}
       <div className="contact">
-        <h1>{data.title}</h1>
+        <h1>{contactData.title}</h1>
         <hr></hr>
-        <p>{data.description}</p>
+        <p>{contactData.description}</p>
         <div className="contact-form justify-content-center">
           <Form>
             <Form.Group className="mb-3" controlId="formBasicName">

@@ -5,15 +5,23 @@ import Container from "react-bootstrap/Container";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 import { string, shape } from "prop-types";
-function Skill(props) {
-  const { data } = props;
+
+import React, { useContext } from "react";
+
+import { DataContext } from "../../context/DataContext";
+function Skill() {
+  const { skillData } = useContext(DataContext);
+
+  if (!skillData) {
+    return <div>Loading...</div>;
+  }
   return (
     <Container fluid>
       {/* Skill section starts here */}
       <div className="skill">
-        <h1>{data.title}</h1>
+        <h1>{skillData.title}</h1>
         <hr></hr>
-        <p>{data.description}</p>
+        <p>{skillData.description}</p>
         <div className="progress-tab">
           <span className="name">HTML</span>
           <span>

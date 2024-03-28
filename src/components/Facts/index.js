@@ -5,25 +5,32 @@ import RichtextSvg from "../../svg/RichtextSvg";
 import HeadsetSvg from "../../svg/HeadsetSvg";
 import PeopleSvg from "../../svg/PeopleSvg";
 
-import { string, shape, number, oneOfType } from "prop-types";
+import { string, shape, number } from "prop-types";
+
+import React, { useContext } from "react";
+
+import { DataContext } from "../../context/DataContext";
 
 import "./index.css";
 
-function Facts(props) {
-  const { data } = props;
+function Facts() {
+  const { factsData } = useContext(DataContext);
+  if (!factsData) {
+    return <div>Loading...</div>; // Handle loading state
+  }
   return (
     <Container fluid>
       {/* Facts section ges here */}
       <div className="facts">
-        <h1>{data.title}</h1>
+        <h1>{factsData.title}</h1>
         <hr></hr>
-        <p>{data.description}</p>
+        <p>{factsData.description}</p>
       </div>
       <div className="row no-gutters">
         <div className="col-lg-3 col-md-6 facts-content">
           <div className="count-box">
             <SmileSvg />
-            <span className="count"> {data.happy_clients}</span>
+            <span className="count"> {factsData.happy_clients}</span>
             <p>
               <strong>Happy Clients</strong> as results.
             </p>
@@ -33,7 +40,7 @@ function Facts(props) {
         <div className="col-lg-3 col-md-6 facts-content">
           <div className="count-box">
             <RichtextSvg />
-            <span className="count">{data.projects}</span>
+            <span className="count">{factsData.projects}</span>
             <p>
               <strong>Projects</strong> get and done.
             </p>
@@ -43,7 +50,7 @@ function Facts(props) {
         <div className="col-lg-3 col-md-6 facts-content">
           <div className="count-box">
             <HeadsetSvg />
-            <span className="count">{data.employees}</span>
+            <span className="count">{factsData.employees}</span>
             <p>
               <strong>Hours Of Support</strong> and seek advantage.
             </p>
@@ -53,7 +60,7 @@ function Facts(props) {
         <div className="col-lg-3 col-md-6 facts-content">
           <div className="count-box">
             <PeopleSvg />
-            <span className="count">{data.hard_workers}</span>
+            <span className="count">{factsData.hard_workers}</span>
             <p>
               <strong>Hard Workers</strong> with harsher pain of things.
             </p>

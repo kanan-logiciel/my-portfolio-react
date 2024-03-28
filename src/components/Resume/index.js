@@ -4,67 +4,79 @@ import Container from "react-bootstrap/Container";
 
 import { string, shape, oneOfType, number } from "prop-types";
 
-function Resume(props) {
-  const { data } = props;
+import React, { useContext } from "react";
+
+import { DataContext } from "../../context/DataContext";
+
+function Resume() {
+  const { resumeData } = useContext(DataContext);
+
+  if (!resumeData) {
+    return <div>Loading...</div>; // Handle loading state
+  }
   return (
     <Container fluid>
       {/* Resume and Summary section starts here  */}
       <div className="resume">
-        <h1>{data.title}</h1>
+        <h1>{resumeData.title}</h1>
         <hr></hr>
-        <p>{data.description}</p>
+        <p>{resumeData.description}</p>
         <div className="main">
           <div className="summary">
-            <h2>{data.headings.heading1}</h2>
+            <h2>{resumeData.headings.heading1}</h2>
             <div className="section-1">
-              <h5>{data.sub_headings.sub_headings1}</h5>
-              <p className="description-bar">{data.highlights.summary}</p>
+              <h5>{resumeData.sub_headings.sub_headings1}</h5>
+              <p className="description-bar">{resumeData.highlights.summary}</p>
               <ul className="list">
-                <li>{data.summary.list1}</li>
-                <li>{data.summary.list2}</li>
+                <li>{resumeData.summary.list1}</li>
+                <li>{resumeData.summary.list2}</li>
               </ul>
             </div>
             <br />
-            <h2>{data.headings.heading2}</h2>
+            <h2>{resumeData.headings.heading2}</h2>
             <div className="section-2">
-              <h5>{data.sub_headings.sub_headings2}</h5>
-              <h6> {data.years.session1}</h6>
-              <p className="para">{data.highlights.education}</p>
-              <p>{data.paragraph}</p>
+              <h5>{resumeData.sub_headings.sub_headings2}</h5>
+              <h6> {resumeData.years.session1}</h6>
+              <p className="para">{resumeData.highlights.education}</p>
+              <p>{resumeData.paragraph}</p>
             </div>
             <br />
             <div className="section-2">
-              <h5>{data.sub_headings.sub_headings3}</h5>
-              <h6>{data.years.session2}</h6>
-              <p className="para">{data.highlights.education}</p>
-              <p>{data.paragraph}</p>
+              <h5>{resumeData.sub_headings.sub_headings3}</h5>
+              <h6>{resumeData.years.session2}</h6>
+              <p className="para">{resumeData.highlights.education}</p>
+              <p>{resumeData.paragraph}</p>
             </div>
           </div>
 
           <div className="experience">
-            <h2>{data.headings.heading3}</h2>
+            <h2>{resumeData.headings.heading3}</h2>
             <div className="section-3">
-              <h5>{data.sub_headings.sub_headings4}</h5>
-              <h6>{data.years.session1}</h6>
-              <p className="para">{data.highlights["professional-exp"]}</p>
+              <h5>{resumeData.sub_headings.sub_headings4}</h5>
+              <h6>{resumeData.years.session1}</h6>
+              <p className="para">
+                {resumeData.highlights["professional-exp"]}
+              </p>
               <ul className="list">
-                <li>{data.senior_list.list_1}</li>
-                <li>{data.senior_list.list_2}</li>
-                <li>{data.senior_list.list_3}</li>
-                <li>{data.senior_list.list_4}</li>
+                <li>{resumeData.senior_list.list_1}</li>
+                <li>{resumeData.senior_list.list_2}</li>
+                <li>{resumeData.senior_list.list_3}</li>
+                <li>{resumeData.senior_list.list_4}</li>
               </ul>
             </div>
             <br />
             <br />
             <div className="section-4">
-              <h5>{data.sub_headings.sub_headings5}</h5>
-              <h6>{data.years.session3}</h6>
-              <p className="para">{data.highlights["professional-exp1"]}</p>
+              <h5>{resumeData.sub_headings.sub_headings5}</h5>
+              <h6>{resumeData.years.session3}</h6>
+              <p className="para">
+                {resumeData.highlights["professional-exp1"]}
+              </p>
               <ul className="list">
-                <li>{data.graphic_list.list_1}</li>
-                <li>{data.graphic_list.list_2}</li>
-                <li>{data.graphic_list.list_3}</li>
-                <li>{data.graphic_list.list_4}</li>
+                <li>{resumeData.graphic_list.list_1}</li>
+                <li>{resumeData.graphic_list.list_2}</li>
+                <li>{resumeData.graphic_list.list_3}</li>
+                <li>{resumeData.graphic_list.list_4}</li>
               </ul>
             </div>
           </div>

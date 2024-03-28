@@ -2,6 +2,10 @@ import Container from "react-bootstrap/Container";
 
 import "./index.css";
 
+import React, { useContext } from "react";
+
+import { DataContext } from "../../context/DataContext";
+
 import { string, shape } from "prop-types";
 const images = [
   "product1.jpg",
@@ -12,15 +16,19 @@ const images = [
   "product1.jpg",
 ];
 
-function Portfolio(props) {
-  const { data } = props;
+function Portfolio() {
+  const { portfolioData } = useContext(DataContext);
+
+  if (!portfolioData) {
+    return <div>Loading...</div>; // Handle loading state
+  }
   return (
     <Container fluid>
       {/* Portfolio section starts from here  */}
       <div className="portfolio">
-        <h1>{data.title}</h1>
+        <h1>{portfolioData.title}</h1>
         <hr></hr>
-        <p>{data.description}</p>
+        <p>{portfolioData.description}</p>
         <div className="docs">
           <div className="row g-3">
             {images.map((image, index) => {
