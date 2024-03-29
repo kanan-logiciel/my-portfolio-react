@@ -3,12 +3,31 @@ import { Navbar, Nav } from "react-bootstrap";
 
 import "./index.css";
 
-import React, { useContext } from "react";
+import { useState, useEffect } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import React, { useContext } from "react";
+
+// import { DataContext } from "../../context/DataContext";
 
 function Header() {
-  const { headerData } = useContext(DataContext);
+  // const { headerData } = useContext(DataContext);
+
+  const [headerData, setData] = useState();
+
+  const getHeaderData = () => {
+    fetch("/data/header.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) =>
+        console.error("Error fetching data from header.json", error)
+      );
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getHeaderData();
+    }, 3000);
+  });
 
   if (!headerData) {
     return <div>Loading...</div>; // Handle loading state

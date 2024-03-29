@@ -7,14 +7,31 @@ import PeopleSvg from "../../svg/PeopleSvg";
 
 import { string, shape, number } from "prop-types";
 
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import { DataContext } from "../../context/DataContext";
+
+import { useState, useEffect } from "react";
 
 import "./index.css";
 
 function Facts() {
-  const { factsData } = useContext(DataContext);
+  // const { factsData } = useContext(DataContext);
+  const [factsData, setData] = useState();
+
+  const getFactsData = () => {
+    fetch("/data/facts.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching facts data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getFactsData();
+    }, 3000);
+  }, []);
+
   if (!factsData) {
     return <div>Loading...</div>; // Handle loading state
   }

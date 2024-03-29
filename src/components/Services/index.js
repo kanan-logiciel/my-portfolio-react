@@ -11,12 +11,28 @@ import Container from "react-bootstrap/Container";
 
 import { string, shape } from "prop-types";
 
-import React, { useContext } from "react";
+import { useState, useEffect } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import React, { useContext } from "react";
+
+// import { DataContext } from "../../context/DataContext";
 
 function Services() {
-  const { servicesData } = useContext(DataContext);
+  // const { servicesData } = useContext(DataContext);
+  const [servicesData, setData] = useState();
+
+  const getServicesData = () => {
+    fetch("/data/services.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching serviecs data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getServicesData();
+    }, 3000);
+  });
 
   if (!servicesData) {
     return <div>Loading...</div>; // Handle loading state

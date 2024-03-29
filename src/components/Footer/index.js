@@ -4,11 +4,28 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import { string, shape } from "prop-types";
 
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import { DataContext } from "../../context/DataContext";
+
+import { useState, useEffect } from "react";
 const Footer = () => {
-  const { footerData } = useContext(DataContext);
+  // const { footerData } = useContext(DataContext);
+
+  const [footerData, setData] = useState();
+
+  const getFooterData = () => {
+    fetch("/data/footer.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching footer data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getFooterData();
+    }, 3000);
+  });
 
   if (!footerData) {
     return <div>Loading...</div>; // Handle loading state

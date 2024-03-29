@@ -10,12 +10,28 @@ import Form from "react-bootstrap/Form";
 
 import { string, shape } from "prop-types";
 
-import React, { useContext } from "react";
+import { useState, useEffect } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import React, { useContext } from "react";
+
+// import { DataContext } from "../../context/DataContext";
 
 function Contact() {
-  const { contactData } = useContext(DataContext);
+  // const { contactData } = useContext(DataContext);
+  const [contactData, setData] = useState();
+
+  const getContactData = () => {
+    fetch("/data/contact.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching contact data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getContactData();
+    }, 3000);
+  });
 
   if (!contactData) {
     return <div>Loading...</div>; // Handle loading state

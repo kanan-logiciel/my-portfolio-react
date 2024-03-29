@@ -4,15 +4,33 @@ import { number, oneOfType, shape, string } from "prop-types";
 
 import Container from "react-bootstrap/Container";
 
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import { DataContext } from "../../context/DataContext";
+
+import axios from "axios";
 
 function About() {
-  const { aboutData } = useContext(DataContext);
+  const [aboutData, setData] = useState(null);
+
+  const getAboutData = () => {
+    // Fetch about data from about.json
+    fetch("/data/about.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching about data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getAboutData();
+    }, 3000);
+  }, []);
+
   if (!aboutData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     <Container fluid>
       {/* About section starts here */}

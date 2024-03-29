@@ -2,9 +2,10 @@ import Container from "react-bootstrap/Container";
 
 import "./index.css";
 
-import React, { useContext } from "react";
+import { useState, useEffect } from "react";
+// import React, { useContext } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import { DataContext } from "../../context/DataContext";
 
 import { string, shape } from "prop-types";
 const images = [
@@ -17,7 +18,22 @@ const images = [
 ];
 
 function Portfolio() {
-  const { portfolioData } = useContext(DataContext);
+  // const { portfolioData } = useContext(DataContext);
+
+  const [portfolioData, setData] = useState();
+
+  const getPortfolioData = () => {
+    fetch("/data/portfolio.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching resume data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getPortfolioData();
+    }, 3000);
+  });
 
   if (!portfolioData) {
     return <div>Loading...</div>; // Handle loading state

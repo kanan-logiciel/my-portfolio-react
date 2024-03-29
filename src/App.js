@@ -22,23 +22,23 @@ import Footer from "./components/Footer";
 // import footerData from "./data/footer.json";
 // import headerData from "./data/header.json";
 
-import { DataContextProvider } from "./context/DataContext";
+// import { DataContextProvider } from "./context/DataContext";
 
 function App() {
   return (
-    <DataContextProvider>
-      <div className="App container">
-        <Header />
-        <About />
-        <Facts />
-        <Skill />
-        <Resume />
-        <Portfolio />
-        <Services />
-        <Contact />
-        <Footer />
-      </div>
-    </DataContextProvider>
+    // <DataContextProvider>
+    <div className="App container">
+      <Header />
+      <About />
+      <Facts />
+      <Skill />
+      <Resume />
+      <Portfolio />
+      <Services />
+      <Contact />
+      <Footer />
+    </div>
+    // </DataContextProvider>
   );
 }
 

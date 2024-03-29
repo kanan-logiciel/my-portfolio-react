@@ -4,12 +4,29 @@ import Container from "react-bootstrap/Container";
 
 import { string, shape, oneOfType, number } from "prop-types";
 
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import { DataContext } from "../../context/DataContext";
+
+import { useState, useEffect } from "react";
 
 function Resume() {
-  const { resumeData } = useContext(DataContext);
+  // const { resumeData } = useContext(DataContext);
+
+  const [resumeData, setData] = useState();
+
+  const getResumeData = () => {
+    fetch("/data/resume.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching resume data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getResumeData();
+    }, 3000);
+  });
 
   if (!resumeData) {
     return <div>Loading...</div>; // Handle loading state

@@ -6,12 +6,28 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 
 import { string, shape } from "prop-types";
 
-import React, { useContext } from "react";
+import { useState, useEffect } from "react";
 
-import { DataContext } from "../../context/DataContext";
+// import React, { useContext } from "react";
+
+// import { DataContext } from "../../context/DataContext";
 function Skill() {
-  const { skillData } = useContext(DataContext);
+  // const { skillData } = useContext(DataContext);
 
+  const [skillData, setData] = useState();
+
+  const getSkillData = () => {
+    fetch("/data/skill.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching skill data:", error));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getSkillData();
+    }, 3000);
+  });
   if (!skillData) {
     return <div>Loading...</div>;
   }
