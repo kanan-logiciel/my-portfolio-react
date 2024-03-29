@@ -8,8 +8,6 @@ import React, { useEffect, useState } from "react";
 
 // import { DataContext } from "../../context/DataContext";
 
-import axios from "axios";
-
 function About() {
   const [aboutData, setData] = useState(null);
 
