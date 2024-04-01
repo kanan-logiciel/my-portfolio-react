@@ -4,6 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import { string, shape } from "prop-types";
 
+import axios from "axios";
+
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
@@ -14,22 +16,35 @@ const Footer = () => {
 
   const [footerData, setData] = useState();
 
-  const getFooterData = () => {
-    fetch("/data/footer.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching footer data:", error));
-  };
+  // const getFooterData = () => {
+  //   fetch("/data/footer.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching footer data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getFooterData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getFooterData();
-    }, 3000);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("data/footer.json");
+        setData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
   });
 
   if (!footerData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     <footer className="footer mt-auto py-3 main-content">
       <Container>

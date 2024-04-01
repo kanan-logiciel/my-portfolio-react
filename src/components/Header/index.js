@@ -5,6 +5,8 @@ import "./index.css";
 
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
@@ -12,22 +14,34 @@ import { useState, useEffect } from "react";
 function Header() {
   // const { headerData } = useContext(DataContext);
 
-  const [headerData, setData] = useState();
+  const [headerData, setHeaderData] = useState();
 
-  const getHeaderData = () => {
-    fetch("/data/header.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) =>
-        console.error("Error fetching data from header.json", error)
-      );
-  };
+  // const getHeaderData = () => {
+  //   fetch("/data/header.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) =>
+  //       console.error("Error fetching data from header.json", error)
+  //     );
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getHeaderData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getHeaderData();
-    }, 3000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("data/header.json");
+        setHeaderData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (!headerData) {
     return <div>Loading...</div>; // Handle loading state

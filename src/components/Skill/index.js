@@ -8,29 +8,45 @@ import { string, shape } from "prop-types";
 
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
 function Skill() {
   // const { skillData } = useContext(DataContext);
 
-  const [skillData, setData] = useState();
+  const [skillData, setSkillData] = useState();
 
-  const getSkillData = () => {
-    fetch("/data/skill.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching skill data:", error));
-  };
+  // const getSkillData = () => {
+  //   fetch("/data/skill.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching skill data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getSkillData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getSkillData();
-    }, 3000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/data/skill.json");
+        setSkillData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   if (!skillData) {
     return <div>Loading...</div>;
   }
+
   return (
     <Container fluid>
       {/* Skill section starts here */}

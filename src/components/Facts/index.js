@@ -11,25 +11,39 @@ import { string, shape, number } from "prop-types";
 
 // import { DataContext } from "../../context/DataContext";
 
+import axios from "axios";
+
 import { useState, useEffect } from "react";
 
 import "./index.css";
 
 function Facts() {
   // const { factsData } = useContext(DataContext);
-  const [factsData, setData] = useState();
+  const [factsData, setFactsData] = useState();
 
-  const getFactsData = () => {
-    fetch("/data/facts.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching facts data:", error));
-  };
+  // const getFactsData = () => {
+  //   fetch("/data/facts.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching facts data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getFactsData();
+  //   }, 3000);
+  // }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      getFactsData();
-    }, 3000);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/data/facts.json");
+        setFactsData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
   }, []);
 
   if (!factsData) {

@@ -1,29 +1,49 @@
 import "./index.css";
 
+import axios from "axios";
+
 import { number, oneOfType, shape, string } from "prop-types";
 
 import Container from "react-bootstrap/Container";
 
 import React, { useEffect, useState } from "react";
 
-// import { DataContext } from "../../context/DataContext";
-
 function About() {
-  const [aboutData, setData] = useState(null);
-
-  const getAboutData = () => {
-    // Fetch about data from about.json
-    fetch("/data/about.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching about data:", error));
-  };
+  const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      getAboutData();
-    }, 3000);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/data/about.json");
+        setAboutData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
   }, []);
+
+  // const postData = async () => {
+  //   try {
+  //     // Read the JSON file
+  //     const jsonData = require("../../data/about.json");
+
+  //     // Post JSON data to the API endpoint
+  //     const response = await axios.post(
+  //       "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/users",
+  //       jsonData
+  //     );
+
+  //     console.log("Post response:", response.data);
+  //     // Handle response as needed
+  //   } catch (error) {
+  //     console.error("Error posting data:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   postData();
+  // }, []);
 
   if (!aboutData) {
     return <div>Loading...</div>; // Handle loading state

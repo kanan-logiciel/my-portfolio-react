@@ -3,6 +3,9 @@ import Container from "react-bootstrap/Container";
 import "./index.css";
 
 import { useState, useEffect } from "react";
+
+import axios from "axios";
+
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
@@ -20,20 +23,32 @@ const images = [
 function Portfolio() {
   // const { portfolioData } = useContext(DataContext);
 
-  const [portfolioData, setData] = useState();
+  const [portfolioData, setPortfolioData] = useState();
 
-  const getPortfolioData = () => {
-    fetch("/data/portfolio.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching resume data:", error));
-  };
+  // const getPortfolioData = () => {
+  //   fetch("/data/portfolio.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching resume data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getPortfolioData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getPortfolioData();
-    }, 3000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("data/portfolio.json");
+        setPortfolioData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (!portfolioData) {
     return <div>Loading...</div>; // Handle loading state

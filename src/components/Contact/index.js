@@ -12,26 +12,40 @@ import { string, shape } from "prop-types";
 
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
 
 function Contact() {
   // const { contactData } = useContext(DataContext);
-  const [contactData, setData] = useState();
+  const [contactData, setContactData] = useState();
 
-  const getContactData = () => {
-    fetch("/data/contact.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching contact data:", error));
-  };
+  // const getContactData = () => {
+  //   fetch("/data/contact.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching contact data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getContactData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getContactData();
-    }, 3000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("data/contact.json");
+        setContactData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (!contactData) {
     return <div>Loading...</div>; // Handle loading state

@@ -13,30 +13,45 @@ import { string, shape } from "prop-types";
 
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
 
 function Services() {
   // const { servicesData } = useContext(DataContext);
-  const [servicesData, setData] = useState();
+  const [servicesData, setServicesData] = useState();
 
-  const getServicesData = () => {
-    fetch("/data/services.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching serviecs data:", error));
-  };
+  // const getServicesData = () => {
+  //   fetch("/data/services.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching serviecs data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getServicesData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getServicesData();
-    }, 3000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("data/services.json");
+        setServicesData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (!servicesData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     <Container fluid>
       {/* Services section starts from here  */}

@@ -10,27 +10,42 @@ import { string, shape, oneOfType, number } from "prop-types";
 
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 function Resume() {
   // const { resumeData } = useContext(DataContext);
 
-  const [resumeData, setData] = useState();
+  const [resumeData, setResumeData] = useState();
 
-  const getResumeData = () => {
-    fetch("/data/resume.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching resume data:", error));
-  };
+  // const getResumeData = () => {
+  //   fetch("/data/resume.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error fetching resume data:", error));
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getResumeData();
+  //   }, 3000);
+  // });
 
   useEffect(() => {
-    setTimeout(() => {
-      getResumeData();
-    }, 3000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/data/resume.json");
+        setResumeData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (!resumeData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     <Container fluid>
       {/* Resume and Summary section starts here  */}
