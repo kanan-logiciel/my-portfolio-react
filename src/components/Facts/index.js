@@ -34,21 +34,49 @@ function Facts() {
   //   }, 3000);
   // }, []);
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/data/facts.json");
+      setFactsData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/data/facts.json");
-        setFactsData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+    // postData();
+    // getData();
     fetchData();
   }, []);
+
+  const postData = async () => {
+    try {
+      const jsonData = require("../../data/facts.json");
+      const response = await axios.post(
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
+        jsonData
+      );
+      console.log("post response:", response.data);
+    } catch (error) {
+      console.log("Error posting data:", error);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+      );
+      console.log("Get response:", response.data);
+    } catch (error) {
+      console.log("Error getting data:", error);
+    }
+  };
 
   if (!factsData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     <Container fluid>
       {/* Facts section ges here */}

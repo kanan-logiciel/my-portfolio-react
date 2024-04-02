@@ -11,35 +11,52 @@ import React, { useEffect, useState } from "react";
 function About() {
   const [aboutData, setAboutData] = useState(null);
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/data/about.json");
+      setAboutData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/data/about.json");
-        setAboutData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
     fetchData();
+    // getData();
+    // postData();
   }, []);
 
-  // const postData = async () => {
-  //   try {
-  //     // Read the JSON file
-  //     const jsonData = require("../../data/about.json");
+  const postData = async () => {
+    try {
+      // Read the JSON file
+      const jsonData = require("../../data/about.json");
 
-  //     // Post JSON data to the API endpoint
-  //     const response = await axios.post(
-  //       "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/users",
-  //       jsonData
-  //     );
+      // Post JSON data to the API endpoint
+      const response = await axios.post(
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
+        jsonData
+      );
 
-  //     console.log("Post response:", response.data);
-  //     // Handle response as needed
-  //   } catch (error) {
-  //     console.error("Error posting data:", error);
-  //   }
-  // };
+      console.log("Post response:", response.data);
+      // Handle response as needed
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      // Post JSON data to the API endpoint
+      const response = await axios.get(
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+      );
+
+      console.log("Get response:", response.data);
+      // Handle response as needed
+    } catch (error) {
+      console.error("Error getting data:", error);
+    }
+  };
 
   // useEffect(() => {
   //   postData();

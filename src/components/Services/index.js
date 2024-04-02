@@ -36,17 +36,43 @@ function Services() {
   //   }, 3000);
   // });
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("data/services.json");
+      setServicesData(response.data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("data/services.json");
-        setServicesData(response.data);
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      }
-    };
     fetchData();
+    // postData();
+    // getData();
   }, []);
+
+  const postData = async () => {
+    try {
+      const jsonData = require("../../data/services.json");
+      const response = await axios.post(
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
+        jsonData
+      );
+      console.log("post response:", response.data);
+    } catch (error) {
+      console.log("Error posting data:", error);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const response = await axios.post(
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+      );
+      console.log("get response:", response.data);
+    } catch (error) {
+      console.log("Error getting data:", error);
+    }
+  };
 
   if (!servicesData) {
     return <div>Loading...</div>; // Handle loading state
