@@ -35,18 +35,19 @@ function Contact() {
   //   }, 3000);
   // });
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("data/contact.json");
-      setContactData(response.data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("data/contact.json");
+  //     setContactData(response.data);
+  //   } catch (error) {
+  //     console.log("Error fetching data:", error);
+  //   }
+  // };
   useEffect(() => {
     // postData();
-    fetchData();
+    // fetchData();
     // getData();
+    getDataById(id);
   }, []);
 
   const postData = async () => {
@@ -61,15 +62,17 @@ function Contact() {
       console.log("Error posting data:", error);
     }
   };
-
-  const getData = async () => {
+  const id = 2;
+  const getDataById = async (id) => {
     try {
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
-      console.log("Getting data:", response.data);
+      console.log("Get response:", response.data);
+      setContactData(response.data);
     } catch (error) {
-      console.log("Error getting data:", error);
+      console.error("Error getting data:", error);
+      throw error;
     }
   };
 

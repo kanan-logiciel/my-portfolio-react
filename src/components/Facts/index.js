@@ -34,19 +34,20 @@ function Facts() {
   //   }, 3000);
   // }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/data/facts.json");
-      setFactsData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("/data/facts.json");
+  //     setFactsData(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
     // postData();
     // getData();
-    fetchData();
+    // fetchData();
+    getDataById(id);
   }, []);
 
   const postData = async () => {
@@ -62,14 +63,17 @@ function Facts() {
     }
   };
 
-  const getData = async () => {
+  const id = 3;
+  const getDataById = async (id) => {
     try {
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
       console.log("Get response:", response.data);
+      setFactsData(response.data);
     } catch (error) {
-      console.log("Error getting data:", error);
+      console.error("Error getting data:", error);
+      throw error;
     }
   };
 

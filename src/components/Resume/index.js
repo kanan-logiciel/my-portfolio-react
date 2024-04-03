@@ -30,18 +30,19 @@ function Resume() {
   //   }, 3000);
   // });
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/data/resume.json");
-      setResumeData(response.data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("/data/resume.json");
+  //     setResumeData(response.data);
+  //   } catch (error) {
+  //     console.log("Error fetching data:", error);
+  //   }
+  // };
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // postData();
     // getData();
+    getDataById(id);
   }, []);
 
   const postData = async () => {
@@ -57,14 +58,17 @@ function Resume() {
     }
   };
 
-  const getData = async () => {
+  const id = 6;
+  const getDataById = async (id) => {
     try {
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
-      console.log("get response:", response.data);
+      console.log("Get response:", response.data);
+      setResumeData(response.data);
     } catch (error) {
-      console.log("Error fetching data:", error);
+      console.error("Error getting data:", error);
+      throw error;
     }
   };
 

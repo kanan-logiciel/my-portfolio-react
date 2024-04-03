@@ -13,6 +13,7 @@ import axios from "axios";
 // import React, { useContext } from "react";
 
 // import { DataContext } from "../../context/DataContext";
+
 function Skill() {
   // const { skillData } = useContext(DataContext);
 
@@ -24,28 +25,29 @@ function Skill() {
   //     .then((data) => setData(data))
   //     .catch((error) => console.error("Error fetching skill data:", error));
   // };
-
   // useEffect(() => {
   //   setTimeout(() => {
   //     getSkillData();
   //   }, 3000);
   // });
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/data/skill.json");
-      setSkillData(response.data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("/data/skill.json");
+  //     setSkillData(response.data);
+  //   } catch (error) {
+  //     console.log("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // postData();
     // getData();
+    getDataById(id);
   }, []);
 
+  // Posting json file data to api server
   const postData = async () => {
     try {
       const jsonData = require("../../data/skill.json");
@@ -59,17 +61,22 @@ function Skill() {
     }
   };
 
-  const getData = async () => {
+  // Getting json data from server api and displaying it
+  const id = 10;
+  const getDataById = async (id) => {
     try {
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
-      console.log("get response:", response.data);
+      console.log("Get response:", response.data);
+      setSkillData(response.data);
     } catch (error) {
-      console.log("Error getting data:", error);
+      console.error("Error getting data:", error);
+      throw error;
     }
   };
 
+  // In case data is not fetched properly
   if (!skillData) {
     return <div>Loading...</div>;
   }

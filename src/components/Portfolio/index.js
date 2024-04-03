@@ -38,19 +38,20 @@ function Portfolio() {
   //   }, 3000);
   // });
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("data/portfolio.json");
-      setPortfolioData(response.data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("data/portfolio.json");
+  //     setPortfolioData(response.data);
+  //   } catch (error) {
+  //     console.log("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // postData();
     // getData();
+    getDataById(id);
   }, []);
 
   const postData = async () => {
@@ -66,14 +67,17 @@ function Portfolio() {
     }
   };
 
-  const getData = async () => {
+  const id = 7;
+  const getDataById = async (id) => {
     try {
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
       console.log("Get response:", response.data);
+      setPortfolioData(response.data);
     } catch (error) {
-      console.log("Error getting data:", error);
+      console.error("Error getting data:", error);
+      throw error;
     }
   };
 

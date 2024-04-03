@@ -11,59 +11,54 @@ import React, { useEffect, useState } from "react";
 function About() {
   const [aboutData, setAboutData] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/data/about.json");
-      setAboutData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("/data/about.json");
+  //     setAboutData(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // getData();
     // postData();
+    getDataById(id);
   }, []);
 
+  // Posting json file data to api server
   const postData = async () => {
     try {
-      // Read the JSON file
       const jsonData = require("../../data/about.json");
-
-      // Post JSON data to the API endpoint
       const response = await axios.post(
         "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
         jsonData
       );
-
       console.log("Post response:", response.data);
-      // Handle response as needed
     } catch (error) {
       console.error("Error posting data:", error);
     }
   };
 
-  const getData = async () => {
+  // Getting data from api server by id
+  const id = 1;
+  const getDataById = async (id) => {
     try {
-      // Post JSON data to the API endpoint
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
-
       console.log("Get response:", response.data);
-      // Handle response as needed
+      setAboutData(response.data);
     } catch (error) {
       console.error("Error getting data:", error);
+      throw error;
     }
   };
 
-  // useEffect(() => {
-  //   postData();
-  // }, []);
-
+  // In case json data is not fetched properly
   if (!aboutData) {
-    return <div>Loading...</div>; // Handle loading state
+    return <div>Loading...</div>;
   }
 
   return (

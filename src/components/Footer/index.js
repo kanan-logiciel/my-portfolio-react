@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 const Footer = () => {
   // const { footerData } = useContext(DataContext);
 
-  const [footerData, setData] = useState();
+  const [footerData, setFooterData] = useState();
 
   // const getFooterData = () => {
   //   fetch("/data/footer.json")
@@ -29,19 +29,20 @@ const Footer = () => {
   //   }, 3000);
   // });
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("data/footer.json");
-      setData(response.data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("data/footer.json");
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.log("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // postData();
     // getData();
+    getDataById(id);
   }, []);
 
   const postData = async () => {
@@ -57,16 +58,20 @@ const Footer = () => {
     }
   };
 
-  const getData = async () => {
+  const id = 4;
+  const getDataById = async (id) => {
     try {
       const response = await axios.get(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio"
+        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
       );
-      console.log("get response:", response.data);
+      console.log("Get response:", response.data);
+      setFooterData(response.data);
     } catch (error) {
-      console.log("Error getting data:", error);
+      console.error("Error getting data:", error);
+      throw error;
     }
   };
+
   if (!footerData) {
     return <div>Loading...</div>; // Handle loading state
   }
