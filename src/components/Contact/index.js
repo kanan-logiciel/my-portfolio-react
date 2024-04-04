@@ -12,72 +12,45 @@ import { string, shape } from "prop-types";
 
 import { useState, useEffect } from "react";
 
-import axios from "axios";
+import { httpGet } from "../../http";
 
-// import React, { useContext } from "react";
-
-// import { DataContext } from "../../context/DataContext";
+import { httpPost } from "../../http";
 
 function Contact() {
-  // const { contactData } = useContext(DataContext);
   const [contactData, setContactData] = useState();
-
-  // const getContactData = () => {
-  //   fetch("/data/contact.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error fetching contact data:", error));
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getContactData();
-  //   }, 3000);
-  // });
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("data/contact.json");
-  //     setContactData(response.data);
-  //   } catch (error) {
-  //     console.log("Error fetching data:", error);
-  //   }
-  // };
-  useEffect(() => {
-    // postData();
-    // fetchData();
-    // getData();
-    getDataById(id);
-  }, []);
 
   const postData = async () => {
     try {
       const jsonData = require("../../data/contact.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("post response:", response);
     } catch (error) {
       console.log("Error posting data:", error);
     }
   };
+
   const id = 2;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setContactData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+      console.log("Get response:", response);
+      setContactData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+  useEffect(() => {
+    // postData();
+    getDataById(id);
+  }, []);
 
   if (!contactData) {
-    return <div>Loading...</div>; // Handle loading state
+    return <div>Loading...</div>;
   }
   return (
     <Container fluid>

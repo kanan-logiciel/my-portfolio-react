@@ -1,10 +1,19 @@
 import "./index.css";
 
+import { httpPost } from "../../http";
+
+import { httpGet } from "../../http";
+
 import Checklist from "../../svg/ChecklistSvg";
+
 import Briefcase from "../../svg/BriefcaseSvg";
+
 import ChartSvg from "../../svg/ChartSvg";
+
 import BinocularSvg from "../../svg/BinocularSvg";
+
 import BrightnessSvg from "../../svg/BrightnessSvg";
+
 import CalendarSvg from "../../svg/CalendarSvg";
 
 import Container from "react-bootstrap/Container";
@@ -13,52 +22,17 @@ import { string, shape } from "prop-types";
 
 import { useState, useEffect } from "react";
 
-import axios from "axios";
-
-// import React, { useContext } from "react";
-
-// import { DataContext } from "../../context/DataContext";
-
 function Services() {
-  // const { servicesData } = useContext(DataContext);
   const [servicesData, setServicesData] = useState();
-
-  // const getServicesData = () => {
-  //   fetch("/data/services.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error fetching serviecs data:", error));
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getServicesData();
-  //   }, 3000);
-  // });
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("data/services.json");
-  //     setServicesData(response.data);
-  //   } catch (error) {
-  //     console.log("Error fetching data:", error);
-  //   }
-  // };
-  useEffect(() => {
-    // fetchData();
-    // postData();
-    // getData();
-    getDataById(id);
-  }, []);
 
   const postData = async () => {
     try {
       const jsonData = require("../../data/services.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("post response:", response);
     } catch (error) {
       console.log("Error posting data:", error);
     }
@@ -67,16 +41,21 @@ function Services() {
   const id = 9;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setServicesData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setServicesData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+
+  useEffect(() => {
+    getDataById(id);
+    // postData();
+  }, []);
 
   if (!servicesData) {
     return <div>Loading...</div>; // Handle loading state

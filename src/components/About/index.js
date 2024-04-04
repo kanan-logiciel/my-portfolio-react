@@ -1,6 +1,8 @@
 import "./index.css";
 
-import axios from "axios";
+import { httpPost } from "../../http";
+
+import { httpGet } from "../../http";
 
 import { number, oneOfType, shape, string } from "prop-types";
 
@@ -11,31 +13,15 @@ import React, { useEffect, useState } from "react";
 function About() {
   const [aboutData, setAboutData] = useState(null);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("/data/about.json");
-  //     setAboutData(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetchData();
-    // getData();
-    // postData();
-    getDataById(id);
-  }, []);
-
   // Posting json file data to api server
   const postData = async () => {
     try {
       const jsonData = require("../../data/about.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("Post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("Post response:", response);
     } catch (error) {
       console.error("Error posting data:", error);
     }
@@ -45,20 +31,24 @@ function About() {
   const id = 1;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setAboutData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setAboutData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
 
-  // In case json data is not fetched properly
+  useEffect(() => {
+    // postData();
+    getDataById(id);
+  }, []);
+
   if (!aboutData) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; // Handle loading state
   }
 
   return (

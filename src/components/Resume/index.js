@@ -1,58 +1,28 @@
 import "./index.css";
 
+import { httpPost } from "../../http";
+
+import { httpGet } from "../../http";
+
 import Container from "react-bootstrap/Container";
 
 import { string, shape, oneOfType, number } from "prop-types";
-
-// import React, { useContext } from "react";
-
-// import { DataContext } from "../../context/DataContext";
 
 import { useState, useEffect } from "react";
 
 import axios from "axios";
 
 function Resume() {
-  // const { resumeData } = useContext(DataContext);
-
   const [resumeData, setResumeData] = useState();
-
-  // const getResumeData = () => {
-  //   fetch("/data/resume.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error fetching resume data:", error));
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getResumeData();
-  //   }, 3000);
-  // });
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("/data/resume.json");
-  //     setResumeData(response.data);
-  //   } catch (error) {
-  //     console.log("Error fetching data:", error);
-  //   }
-  // };
-  useEffect(() => {
-    // fetchData();
-    // postData();
-    // getData();
-    getDataById(id);
-  }, []);
 
   const postData = async () => {
     try {
       const jsonData = require("../../data/resume.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("post response:", response);
     } catch (error) {
       console.log("Error posting data:", error);
     }
@@ -61,16 +31,20 @@ function Resume() {
   const id = 6;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setResumeData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setResumeData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+  useEffect(() => {
+    getDataById(id);
+    // postData();
+  }, []);
 
   if (!resumeData) {
     return <div>Loading...</div>; // Handle loading state

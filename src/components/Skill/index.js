@@ -1,5 +1,9 @@
 import "./index.css";
 
+import { httpPost } from "../../http";
+
+import { httpGet } from "../../http";
+
 import Container from "react-bootstrap/Container";
 
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -8,75 +12,39 @@ import { string, shape } from "prop-types";
 
 import { useState, useEffect } from "react";
 
-import axios from "axios";
-
-// import React, { useContext } from "react";
-
-// import { DataContext } from "../../context/DataContext";
-
 function Skill() {
-  // const { skillData } = useContext(DataContext);
-
   const [skillData, setSkillData] = useState();
-
-  // const getSkillData = () => {
-  //   fetch("/data/skill.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error fetching skill data:", error));
-  // };
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getSkillData();
-  //   }, 3000);
-  // });
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("/data/skill.json");
-  //     setSkillData(response.data);
-  //   } catch (error) {
-  //     console.log("Error fetching data:", error);
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetchData();
-    // postData();
-    // getData();
-    getDataById(id);
-  }, []);
-
-  // Posting json file data to api server
   const postData = async () => {
     try {
       const jsonData = require("../../data/skill.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("post response:", response);
     } catch (error) {
       console.log("Error posting data:", error);
     }
   };
 
-  // Getting json data from server api and displaying it
   const id = 10;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setSkillData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setSkillData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+  useEffect(() => {
+    // postData();
+    getDataById(id);
+  }, []);
 
-  // In case data is not fetched properly
   if (!skillData) {
     return <div>Loading...</div>;
   }
@@ -125,7 +93,6 @@ function Skill() {
         <br />
       </div>
       {/* Skill section ends here */}
-
       <br />
       <br />
     </Container>

@@ -4,55 +4,23 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import { string, shape } from "prop-types";
 
-import axios from "axios";
-
-// import React, { useContext } from "react";
-
-// import { DataContext } from "../../context/DataContext";
-
 import { useState, useEffect } from "react";
+
+import { httpPost } from "../../http";
+
+import { httpGet } from "../../http";
+
 const Footer = () => {
-  // const { footerData } = useContext(DataContext);
-
   const [footerData, setFooterData] = useState();
-
-  // const getFooterData = () => {
-  //   fetch("/data/footer.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error fetching footer data:", error));
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getFooterData();
-  //   }, 3000);
-  // });
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("data/footer.json");
-  //     setData(response.data);
-  //   } catch (error) {
-  //     console.log("Error fetching data:", error);
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetchData();
-    // postData();
-    // getData();
-    getDataById(id);
-  }, []);
 
   const postData = async () => {
     try {
       const jsonData = require("../../data/footer.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("post response:", response);
     } catch (error) {
       console.log("Error posting data:", error);
     }
@@ -61,16 +29,21 @@ const Footer = () => {
   const id = 4;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setFooterData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setFooterData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+
+  useEffect(() => {
+    // postData();
+    getDataById(id);
+  }, []);
 
   if (!footerData) {
     return <div>Loading...</div>; // Handle loading state

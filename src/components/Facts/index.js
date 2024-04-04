@@ -1,63 +1,34 @@
 import Container from "react-bootstrap/Container";
 
 import SmileSvg from "../../svg/SmileSvg";
+
 import RichtextSvg from "../../svg/RichtextSvg";
+
 import HeadsetSvg from "../../svg/HeadsetSvg";
+
 import PeopleSvg from "../../svg/PeopleSvg";
 
 import { string, shape, number } from "prop-types";
 
-// import React, { useContext } from "react";
-
-// import { DataContext } from "../../context/DataContext";
-
-import axios from "axios";
-
 import { useState, useEffect } from "react";
+
+import { httpGet } from "../../http";
+
+import { httpPost } from "../../http";
 
 import "./index.css";
 
 function Facts() {
-  // const { factsData } = useContext(DataContext);
   const [factsData, setFactsData] = useState();
-
-  // const getFactsData = () => {
-  //   fetch("/data/facts.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error fetching facts data:", error));
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getFactsData();
-  //   }, 3000);
-  // }, []);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("/data/facts.json");
-  //     setFactsData(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
-  useEffect(() => {
-    // postData();
-    // getData();
-    // fetchData();
-    getDataById(id);
-  }, []);
 
   const postData = async () => {
     try {
       const jsonData = require("../../data/facts.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
-      console.log("post response:", response.data);
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
+      console.log("post response:", response);
     } catch (error) {
       console.log("Error posting data:", error);
     }
@@ -66,16 +37,20 @@ function Facts() {
   const id = 3;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setFactsData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setFactsData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+  useEffect(() => {
+    // postData();
+    getDataById(id);
+  }, []);
 
   if (!factsData) {
     return <div>Loading...</div>; // Handle loading state

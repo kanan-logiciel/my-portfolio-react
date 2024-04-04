@@ -1,58 +1,27 @@
-import { shape, string } from "prop-types";
-import { Navbar, Nav } from "react-bootstrap";
-
 import "./index.css";
-
-import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-// import React, { useContext } from "react";
+import { httpPost } from "../../http";
 
-// import { DataContext } from "../../context/DataContext";
+import { httpGet } from "../../http";
+
+import { shape, string } from "prop-types";
+
+import { Navbar, Nav } from "react-bootstrap";
+
+import { useState, useEffect } from "react";
 
 function Header() {
-  // const { headerData } = useContext(DataContext);
-
   const [headerData, setHeaderData] = useState();
-
-  // const getHeaderData = () => {
-  //   fetch("/data/header.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) =>
-  //       console.error("Error fetching data from header.json", error)
-  //     );
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getHeaderData();
-  //   }, 3000);
-  // });
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("data/header.json");
-  //     setHeaderData(response.data);
-  //   } catch (error) {
-  //     console.log("Error fetching data:", error);
-  //   }
-  // };
-  useEffect(() => {
-    // fetchData();
-    // postData();
-    // getData();
-    getDataById(id);
-  }, []);
 
   const postData = async () => {
     try {
       const jsonData = require("../../data/header.json");
-      const response = await axios.post(
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio",
-        jsonData
-      );
+      const url =
+        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
+      const response = await httpPost(url, jsonData);
+
       console.log("post response:", response.data);
     } catch (error) {
       console.log("Error posting data:", error);
@@ -62,16 +31,22 @@ function Header() {
   const id = 5;
   const getDataById = async (id) => {
     try {
-      const response = await axios.get(
-        `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`
-      );
-      console.log("Get response:", response.data);
-      setHeaderData(response.data);
+      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const response = await httpGet(url);
+
+      console.log("Get response:", response);
+      setHeaderData(response);
     } catch (error) {
       console.error("Error getting data:", error);
       throw error;
     }
   };
+
+  useEffect(() => {
+    // postData();
+    getDataById(id);
+  }, []);
+
   if (!headerData) {
     return <div>Loading...</div>; // Handle loading state
   }
