@@ -1,10 +1,10 @@
 import "./index.css";
 
-import axios from "axios";
-
 import { httpPost } from "../../http";
 
 import { httpGet } from "../../http";
+
+import { API_URLS } from "../../configs/api";
 
 import { shape, string } from "prop-types";
 
@@ -18,9 +18,7 @@ function Header() {
   const postData = async () => {
     try {
       const jsonData = require("../../data/header.json");
-      const url =
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
-      const response = await httpPost(url, jsonData);
+      const response = await httpPost(API_URLS.PORTFOLIO, jsonData);
 
       console.log("post response:", response.data);
     } catch (error) {
@@ -31,7 +29,7 @@ function Header() {
   const id = 5;
   const getDataById = async (id) => {
     try {
-      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const url = `${API_URLS.PORTFOLIO}/${id}`;
       const response = await httpGet(url);
 
       console.log("Get response:", response);

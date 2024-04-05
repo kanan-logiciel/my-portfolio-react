@@ -4,6 +4,8 @@ import { httpPost } from "../../http";
 
 import { httpGet } from "../../http";
 
+import { API_URLS } from "../../configs/api";
+
 import { useState, useEffect } from "react";
 
 import Container from "react-bootstrap/Container";
@@ -25,9 +27,7 @@ function Portfolio() {
   const postData = async () => {
     try {
       const jsonData = require("../../data/portfolio.json");
-      const url =
-        "https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio";
-      const response = await httpPost(url, jsonData);
+      const response = await httpPost(API_URLS.PORTFOLIO, jsonData);
 
       console.log("post response:", response);
     } catch (error) {
@@ -38,7 +38,7 @@ function Portfolio() {
   const id = 7;
   const getDataById = async (id) => {
     try {
-      const url = `https://65d86728c96fbb24c1bb70f7.mockapi.io/api/v1/portfolio/${id}`;
+      const url = `${API_URLS.PORTFOLIO}/${id}`;
       const response = await httpGet(url);
 
       console.log("Get response:", response);
