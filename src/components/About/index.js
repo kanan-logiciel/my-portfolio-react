@@ -1,15 +1,9 @@
 import "./index.css";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
-
 import { number, oneOfType, shape, string } from "prop-types";
-
 import Container from "react-bootstrap/Container";
-
 import React, { useEffect, useState } from "react";
-
 import { API_URLS } from "../../configs/api";
 
 function About() {

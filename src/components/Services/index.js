@@ -1,25 +1,14 @@
 import "./index.css";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
-
 import Checklist from "../../svg/ChecklistSvg";
-
 import Briefcase from "../../svg/BriefcaseSvg";
-
 import ChartSvg from "../../svg/ChartSvg";
-
 import BinocularSvg from "../../svg/BinocularSvg";
-
 import BrightnessSvg from "../../svg/BrightnessSvg";
-
 import CalendarSvg from "../../svg/CalendarSvg";
-
 import Container from "react-bootstrap/Container";
-
 import { string, shape } from "prop-types";
-
 import { useState, useEffect } from "react";
 
 function Services() {

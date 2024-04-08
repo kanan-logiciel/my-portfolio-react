@@ -1,15 +1,9 @@
 import "./index.css";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
-
 import { API_URLS } from "../../configs/api";
-
 import Container from "react-bootstrap/Container";
-
 import { string, shape, oneOfType, number } from "prop-types";
-
 import { useState, useEffect } from "react";
 
 function Resume() {

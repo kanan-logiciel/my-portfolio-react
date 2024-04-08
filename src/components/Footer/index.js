@@ -1,15 +1,9 @@
 import "./index.css";
-
 import { Container, Row, Col } from "react-bootstrap";
-
 import { string, shape } from "prop-types";
-
 import { useState, useEffect } from "react";
-
 import { API_URLS } from "../../configs/api";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
 
 const Footer = () => {

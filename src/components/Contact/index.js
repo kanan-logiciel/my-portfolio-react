@@ -1,21 +1,12 @@
 import "./index.css";
-
 import Container from "react-bootstrap/Container";
-
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-
 import Button from "react-bootstrap/Button";
-
 import Form from "react-bootstrap/Form";
-
 import { string, shape } from "prop-types";
-
 import { useState, useEffect } from "react";
-
 import { API_URLS } from "../../configs/api";
-
 import { httpGet } from "../../http";
-
 import { httpPost } from "../../http";
 
 function Contact() {
@@ -44,6 +35,7 @@ function Contact() {
       throw error;
     }
   };
+
   useEffect(() => {
     // postData();
     getDataById(id);
@@ -52,6 +44,7 @@ function Contact() {
   if (!contactData) {
     return <div>Loading...</div>;
   }
+
   return (
     <Container fluid>
       {/* Contact section starts from here  */}

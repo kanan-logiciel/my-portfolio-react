@@ -1,23 +1,13 @@
 import Container from "react-bootstrap/Container";
-
 import SmileSvg from "../../svg/SmileSvg";
-
 import RichtextSvg from "../../svg/RichtextSvg";
-
 import HeadsetSvg from "../../svg/HeadsetSvg";
-
 import PeopleSvg from "../../svg/PeopleSvg";
-
 import { string, shape, number } from "prop-types";
-
 import { useState, useEffect } from "react";
-
 import { API_URLS } from "../../configs/api";
-
 import { httpGet } from "../../http";
-
 import { httpPost } from "../../http";
-
 import "./index.css";
 
 function Facts() {
@@ -47,6 +37,7 @@ function Facts() {
       throw error;
     }
   };
+
   useEffect(() => {
     // postData();
     getDataById(id);

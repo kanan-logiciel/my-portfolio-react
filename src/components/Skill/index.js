@@ -1,17 +1,10 @@
 import "./index.css";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
-
 import Container from "react-bootstrap/Container";
-
 import ProgressBar from "react-bootstrap/ProgressBar";
-
 import { string, shape } from "prop-types";
-
 import { useState, useEffect } from "react";
-
 import { API_URLS } from "../../configs/api";
 
 function Skill() {
@@ -40,6 +33,7 @@ function Skill() {
       throw error;
     }
   };
+
   useEffect(() => {
     // postData();
     getDataById(id);

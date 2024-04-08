@@ -1,15 +1,9 @@
 import "./index.css";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
-
 import { API_URLS } from "../../configs/api";
-
 import { shape, string } from "prop-types";
-
 import { Navbar, Nav } from "react-bootstrap";
-
 import { useState, useEffect } from "react";
 
 function Header() {
@@ -48,6 +42,7 @@ function Header() {
   if (!headerData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     // Header section starts here
     <Navbar className="header-bar" expand="lg">

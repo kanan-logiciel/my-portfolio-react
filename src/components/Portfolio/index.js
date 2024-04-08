@@ -1,15 +1,9 @@
 import "./index.css";
-
 import { httpPost } from "../../http";
-
 import { httpGet } from "../../http";
-
 import { API_URLS } from "../../configs/api";
-
 import { useState, useEffect } from "react";
-
 import Container from "react-bootstrap/Container";
-
 import { string, shape } from "prop-types";
 
 const images = [
@@ -57,6 +51,7 @@ function Portfolio() {
   if (!portfolioData) {
     return <div>Loading...</div>; // Handle loading state
   }
+
   return (
     <Container fluid>
       {/* Portfolio section starts from here  */}
